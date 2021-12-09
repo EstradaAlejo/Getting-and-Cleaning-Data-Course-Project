@@ -9,7 +9,7 @@ This repository includes the following files:
 
 - 'CodeBook.md': indicate all the variables and summaries calculated, along with units, and any other relevant information.
 
-- 'script': The code in R for collect, work with, and clean the data set. 
+- 'run_analysis.R': The code in R for collect, work with, and clean the data set. 
 
 - 'Data': The tidy data from the data set in https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip.
 
