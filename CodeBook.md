@@ -2,20 +2,19 @@
 # The goal of this project is to prepare tidy data that can be used for later analysis. For do this, we extracts only the measurements on the mean and standard deviation for each measurement of the raw data. 
 
 
-# We start reading the features and the activities of the raw data. 
-features <- read.table("UCI HAR Dataset/features.txt")  # Read features
+## We start reading the features and the activities of the raw data. 
+`features <- read.table("UCI HAR Dataset/features.txt")  # Read features
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")  #Read activity lebels
 
 Positions <- grep("*mean*|*std*", features[,2])   # Extracts the position of the mean and standard deviation
 namesFeatures <- features[Positions,2]     # Select the desired names 
 namesFeatures <- gsub('[-()]', '', namesFeatures)
 namesFeatures <- gsub('-mean', 'Mean', namesFeatures)
-namesFeatures <- gsub('-std', 'Std', namesFeatures)
+namesFeatures <- gsub('-std', 'Std', namesFeatures)`
 
 
 
-# Then we read the measurement of the train and the test data files and merged with the activity lebels and the subject for created a tidy data
-# the tidy datas dimension are (7352, 81) for the train data set and (2947 81) for the test data set
+## Then we read the measurement of the train and the test data files and merged with the activity lebels and the subject for created a tidy data the tidy datas dimension are (7352, 81) for the train data set and (2947 81) for the test data set
 
 trainSubjects <- read.table("UCI HAR Dataset/train/subject_train.txt") # Read the subject_train
 trainActivities <- read.table("UCI HAR Dataset/train/Y_train.txt")   # Read the activities (Y_train)
@@ -32,8 +31,8 @@ test <- cbind(testSubjects, testActivities, x_test) # Merge
 
 
 
-# Here, we merged the train and the test data set in a unique data frame and assing the names of the columns. The name of the columns are:
-# 'subject' 'activity' 'tBodyAccmeanX' 'tBodyAccmeanY' 'tBodyAccmeanZ' 'tBodyAccstdX' 'tBodyAccstdY' 'tBodyAccstdZ' 'tGravityAccmeanX' 'tGravityAccmeanY' 'tGravityAccmeanZ' 'tGravityAccstdX' 'tGravityAccstdY' 'tGravityAccstdZ' 'tBodyAccJerkmeanX' 'tBodyAccJerkmeanY' 'tBodyAccJerkmeanZ' 'tBodyAccJerkstdX' 'tBodyAccJerkstdY' 'tBodyAccJerkstdZ' 'tBodyGyromeanX' 'tBodyGyromeanY' 'tBodyGyromeanZ' 'tBodyGyrostdX' 'tBodyGyrostdY' 'tBodyGyrostdZ' 'tBodyGyroJerkmeanX' 'tBodyGyroJerkmeanY' 'tBodyGyroJerkmeanZ' 'tBodyGyroJerkstdX' 'tBodyGyroJerkstdY' 'tBodyGyroJerkstdZ' 'tBodyAccMagmean' 'tBodyAccMagstd' 'tGravityAccMagmean' 'tGravityAccMagstd' 'tBodyAccJerkMagmean' 'tBodyAccJerkMagstd' 'tBodyGyroMagmean' 'tBodyGyroMagstd' 'tBodyGyroJerkMagmean' 'tBodyGyroJerkMagstd' 'fBodyAccmeanX' 'fBodyAccmeanY' 'fBodyAccmeanZ' 'fBodyAccstdX' 'fBodyAccstdY' 'fBodyAccstdZ' 'fBodyAccmeanFreqX' 'fBodyAccmeanFreqY' 'fBodyAccmeanFreqZ' 'fBodyAccJerkmeanX' 'fBodyAccJerkmeanY' 'fBodyAccJerkmeanZ' 'fBodyAccJerkstdX' 'fBodyAccJerkstdY' 'fBodyAccJerkstdZ' 'fBodyAccJerkmeanFreqX' 'fBodyAccJerkmeanFreqY' 'fBodyAccJerkmeanFreqZ' 'fBodyGyromeanX' 'fBodyGyromeanY' 'fBodyGyromeanZ' 'fBodyGyrostdX' 'fBodyGyrostdY' 'fBodyGyrostdZ' 'fBodyGyromeanFreqX' 'fBodyGyromeanFreqY' 'fBodyGyromeanFreqZ' 'fBodyAccMagmean' 'fBodyAccMagstd' 'fBodyAccMagmeanFreq' 'fBodyBodyAccJerkMagmean' 'fBodyBodyAccJerkMagstd' 'fBodyBodyAccJerkMagmeanFreq' 'fBodyBodyGyroMagmean' 'fBodyBodyGyroMagstd' 'fBodyBodyGyroMagmeanFreq' 'fBodyBodyGyroJerkMagmean' 'fBodyBodyGyroJerkMagstd' 'fBodyBodyGyroJerkMagmeanFreq'
+## Here, we merged the train and the test data set in a unique data frame and assing the names of the columns. The name of the columns are:
+### 'subject' 'activity' 'tBodyAccmeanX' 'tBodyAccmeanY' 'tBodyAccmeanZ' 'tBodyAccstdX' 'tBodyAccstdY' 'tBodyAccstdZ' 'tGravityAccmeanX' 'tGravityAccmeanY' 'tGravityAccmeanZ' 'tGravityAccstdX' 'tGravityAccstdY' 'tGravityAccstdZ' 'tBodyAccJerkmeanX' 'tBodyAccJerkmeanY' 'tBodyAccJerkmeanZ' 'tBodyAccJerkstdX' 'tBodyAccJerkstdY' 'tBodyAccJerkstdZ' 'tBodyGyromeanX' 'tBodyGyromeanY' 'tBodyGyromeanZ' 'tBodyGyrostdX' 'tBodyGyrostdY' 'tBodyGyrostdZ' 'tBodyGyroJerkmeanX' 'tBodyGyroJerkmeanY' 'tBodyGyroJerkmeanZ' 'tBodyGyroJerkstdX' 'tBodyGyroJerkstdY' 'tBodyGyroJerkstdZ' 'tBodyAccMagmean' 'tBodyAccMagstd' 'tGravityAccMagmean' 'tGravityAccMagstd' 'tBodyAccJerkMagmean' 'tBodyAccJerkMagstd' 'tBodyGyroMagmean' 'tBodyGyroMagstd' 'tBodyGyroJerkMagmean' 'tBodyGyroJerkMagstd' 'fBodyAccmeanX' 'fBodyAccmeanY' 'fBodyAccmeanZ' 'fBodyAccstdX' 'fBodyAccstdY' 'fBodyAccstdZ' 'fBodyAccmeanFreqX' 'fBodyAccmeanFreqY' 'fBodyAccmeanFreqZ' 'fBodyAccJerkmeanX' 'fBodyAccJerkmeanY' 'fBodyAccJerkmeanZ' 'fBodyAccJerkstdX' 'fBodyAccJerkstdY' 'fBodyAccJerkstdZ' 'fBodyAccJerkmeanFreqX' 'fBodyAccJerkmeanFreqY' 'fBodyAccJerkmeanFreqZ' 'fBodyGyromeanX' 'fBodyGyromeanY' 'fBodyGyromeanZ' 'fBodyGyrostdX' 'fBodyGyrostdY' 'fBodyGyrostdZ' 'fBodyGyromeanFreqX' 'fBodyGyromeanFreqY' 'fBodyGyromeanFreqZ' 'fBodyAccMagmean' 'fBodyAccMagstd' 'fBodyAccMagmeanFreq' 'fBodyBodyAccJerkMagmean' 'fBodyBodyAccJerkMagstd' 'fBodyBodyAccJerkMagmeanFreq' 'fBodyBodyGyroMagmean' 'fBodyBodyGyroMagstd' 'fBodyBodyGyroMagmeanFreq' 'fBodyBodyGyroJerkMagmean' 'fBodyBodyGyroJerkMagstd' 'fBodyBodyGyroJerkMagmeanFreq'
 
 Data <- rbind(train, test)   # Merge train and test dataset
 colnames(Data) <- c("subject", "activity", namesFeatures)  # Add the column names
@@ -45,7 +44,7 @@ write.table(Data, "Data.txt", row.names = FALSE, quote = FALSE)
 
 
 
-# The last part of the script is for create a second independient data frame with the mean of each variable for each subject and each activity in the first column and second column respectively.
+## The last part of the script is for create a second independient data frame with the mean of each variable for each subject and each activity in the first column and second column respectively.
 
 #Creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 library(reshape2)
