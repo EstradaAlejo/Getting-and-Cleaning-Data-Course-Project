@@ -2,6 +2,20 @@
 # The goal of this project is to prepare tidy data that can be used for later analysis. For do this, we extracts only the measurements on the mean and standard deviation for each measurement of the raw data. 
 
 
+
+## We download and unzip the file containing the raw data
+``` [R]
+if (!file.exists("thefile")){
+  fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip "
+  download.file(fileURL, thefile, method="curl")
+}                           # Download the zip dataset
+if (!file.exists("UCI HAR Dataset")) { 
+  unzip(thefile) 
+}                           # Unzip the zip dataset 
+```
+
+
+
 ## We start reading the features and the activities of the raw data. 
 ``` [R]
 features <- read.table("UCI HAR Dataset/features.txt")  # Read features
