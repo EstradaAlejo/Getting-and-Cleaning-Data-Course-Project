@@ -3,14 +3,14 @@
 
 
 ## We start reading the features and the activities of the raw data. 
-`features <- read.table("UCI HAR Dataset/features.txt")`  `# Read features`
+features <- read.table("UCI HAR Dataset/features.txt")  # Read features
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")  #Read activity lebels
 
-Positions <- grep("*mean*|*std*", features[,2])   # Extracts the position of the mean and standard deviation
+``` [language] Positions <- grep("*mean*|*std*", features[,2])   # Extracts the position of the mean and standard deviation
 namesFeatures <- features[Positions,2]     # Select the desired names 
 namesFeatures <- gsub('[-()]', '', namesFeatures)
 namesFeatures <- gsub('-mean', 'Mean', namesFeatures)
-namesFeatures <- gsub('-std', 'Std', namesFeatures)`
+namesFeatures <- gsub('-std', 'Std', namesFeatures) ``` [language]
 
 
 
