@@ -1,5 +1,13 @@
 
 
+if (!file.exists("thefile")){
+  fileURL <- "https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip "
+  download.file(fileURL, thefile, method="curl")
+}                           # Download the zip dataset
+if (!file.exists("UCI HAR Dataset")) { 
+  unzip(thefile) 
+}                           # Unzip the zip dataset 
+
 features <- read.table("UCI HAR Dataset/features.txt")  # Read features
 activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")  #Read activity lebels
 
