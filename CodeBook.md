@@ -10,7 +10,7 @@ activity_labels <- read.table("UCI HAR Dataset/activity_labels.txt")  #Read acti
 namesFeatures <- features[Positions,2]     # Select the desired names 
 namesFeatures <- gsub('[-()]', '', namesFeatures)
 namesFeatures <- gsub('-mean', 'Mean', namesFeatures)
-namesFeatures <- gsub('-std', 'Std', namesFeatures) ``` [R]
+namesFeatures <- gsub('-std', 'Std', namesFeatures) ```
 
 
 
